@@ -1,0 +1,8 @@
+.selected {
+    background-color: #335267;
+    color: white;
+}
+
+.btn-outline-secondary:hover {
+    background-color: #335267 !important;
+}

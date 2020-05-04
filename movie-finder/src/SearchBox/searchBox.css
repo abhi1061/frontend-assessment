@@ -1,0 +1,9 @@
+.searchBtn {
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.pre-noback {
+    background-color: transparent;
+    border-right: none;
+}

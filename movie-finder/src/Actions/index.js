@@ -10,3 +10,12 @@ export const getTrending = async (page) => {
     return res.data;
   }
 };
+
+export const getSearchResult = async (query, page) => {
+  const res = await axios.get(
+    `/search/multi?api_key=${API_KEY}&page=${page}&query=${query}`,
+  );
+  if (res.status === 200) {
+    return res.data;
+  }
+};

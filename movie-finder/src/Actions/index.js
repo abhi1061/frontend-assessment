@@ -1,19 +1,10 @@
 import axios from 'axios';
 
-import { API_KEY } from './constants';
-
-export const getTrending = async (page) => {
-  const res = await axios.get(
-    `/trending/all/week?api_key=${API_KEY}&page=${page}`,
-  );
-  if (res.status === 200) {
-    return res.data;
-  }
-};
+import { API_KEY, API_ENDPOINT } from './constants';
 
 export const getSearchResult = async (query, page) => {
   const res = await axios.get(
-    `/search/multi?api_key=${API_KEY}&page=${page}&query=${query}`,
+    `${API_ENDPOINT}?api_key=${API_KEY}&page=${page}&query=${query}`,
   );
   if (res.status === 200) {
     return res.data;

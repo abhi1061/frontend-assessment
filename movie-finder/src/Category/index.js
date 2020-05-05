@@ -9,7 +9,7 @@ export default function CategorySelection(props) {
     { id: 1, name: 'All', mediaType: 'all' },
     { id: 2, name: 'Movies', mediaType: 'movie' },
     { id: 3, name: 'TV Shows', mediaType: 'tv' },
-    { id: 4, name: 'People', mediaType: 'people' },
+    { id: 4, name: 'People', mediaType: 'person' },
   ];
 
   function getClassName(mediaType) {

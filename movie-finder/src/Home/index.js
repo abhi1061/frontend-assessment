@@ -2,27 +2,31 @@ import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 
 import useInfiniteScroll from './useInfiniteScroll';
-import { getTrending } from '../Actions';
+import { getSearchResult } from '../Actions';
 import './home.css';
 import SearchBox from '../SearchBox';
 import CategorySelection from '../Category';
 import List from '../List';
 
-export default function Home() {
+export default function Home(props) {
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
+  const [query, setQuery] = useState('tom');
   const [category, setCategory] = useState('all');
 
-  async function fetchTrending(page) {
-    let response = await getTrending(page);
-    setState((prevState) => [...prevState, ...response.results]);
-  }
-
-  useEffect(() => {
-    fetchTrending(page);
-  }, [page]);
-
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
+
+  async function fetchData(query, page) {
+    if (query === '') {
+      return;
+    }
+    let response = await getSearchResult(query, page);
+    if (isFetching) {
+      setState((prevState) => [...prevState, ...response.results]);
+    } else {
+      setState(response.results);
+    }
+  }
 
   function fetchMoreListItems() {
     setTimeout(() => {
@@ -30,6 +34,11 @@ export default function Home() {
       setIsFetching(false);
     }, 2000);
   }
+
+  useEffect(() => {
+    fetchData(query, page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, page]);
 
   function filterData() {
     if (category !== 'all') {
@@ -42,9 +51,13 @@ export default function Home() {
     <div className="home-container">
       <div className="card shadow banner"></div>
       <div className="card shadow p-4 body-card">
-        <SearchBox />
+        <SearchBox setQuery={setQuery} />
         <CategorySelection category={category} setCategory={setCategory} />
-        <List data={filterData()} />
+        {state.length ? (
+          <List id="list" data={filterData()} />
+        ) : (
+          <span>No Data Found</span>
+        )}
       </div>
       {isFetching ? (
         <div className="loader mt-3">

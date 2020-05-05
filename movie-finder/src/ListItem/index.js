@@ -28,12 +28,20 @@ export default function ListItem(props) {
       <div className="detail-container">
         <Detail data={data} />
         <div className="desc-container pt-3">
-          <p>{truncate(data.overview, 500)}</p>
+          <p>
+            {data.overview
+              ? truncate(data.overview, 500)
+              : data.known_for && data.known_for.length
+              ? truncate(data.known_for[0].overview, 500)
+              : ''}
+          </p>
         </div>
-        <div className="rating-trailer-container">
-          <Rating vote={data.vote_average} />
-          {data.media_type !== 'person' ? <Trailer /> : null}
-        </div>
+        {data.media_type !== 'person' ? (
+          <div className="rating-trailer-container">
+            <Rating vote={data.vote_average} />
+            <Trailer />
+          </div>
+        ) : null}
       </div>
     </div>
   );

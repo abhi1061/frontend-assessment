@@ -19,7 +19,7 @@ export default function SearchBar(props) {
     <div className="input-group mb-3">
       <div className="input-group-prepend">
         <span className="input-group-text pre-noback">
-          <i className="fa fa-search"></i>
+          <i className="fa fa-xs fa-search"></i>
         </span>
       </div>
       <input

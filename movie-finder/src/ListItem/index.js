@@ -39,7 +39,7 @@ export default function ListItem(props) {
         {data.media_type !== 'person' ? (
           <div className="rating-trailer-container">
             <Rating vote={data.vote_average} />
-            <Trailer />
+            <Trailer id={data.id} mediatype={data.media_type} />
           </div>
         ) : null}
       </div>

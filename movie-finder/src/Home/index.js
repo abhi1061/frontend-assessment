@@ -11,7 +11,7 @@ import List from '../List';
 export default function Home(props) {
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
-  const [query, setQuery] = useState('tom');
+  const [query, setQuery] = useState('e'); // Initial query param as wery is required parameter
   const [category, setCategory] = useState('all');
 
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);

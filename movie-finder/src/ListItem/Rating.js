@@ -1,14 +1,31 @@
 import React from 'react';
-import { ProgressBar } from 'react-bootstrap';
 
 export default function Rating(props) {
   const { vote } = props;
+
+  const renderRatingColor = (rating) => {
+    if (rating <= 20) {
+      return 'progress-bar-poor';
+    } else if (rating >= 20 && rating <= 50) {
+      return 'progress-bar-average';
+    } else {
+      return 'progress-bar';
+    }
+  };
   return (
     <div className="rate-container">
       <span>
-        User Rating: <span className="user-rating">{`${vote * 10}%`}</span>
+        User Rating:{' '}
+        <span className="user-rating">
+          {vote > 0 ? `${vote * 10}%` : 'Not Rated'}
+        </span>
       </span>
-      <ProgressBar now={vote * 10} className="w-100 custom-progress-bar" />
+      <div className="progress custom-progress-bar  w-100">
+        <div
+          className={renderRatingColor(vote * 10)}
+          style={{ width: `${vote * 10}%` }}
+        ></div>
+      </div>
     </div>
   );
 }

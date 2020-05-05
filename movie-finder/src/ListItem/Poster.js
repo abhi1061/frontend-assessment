@@ -1,5 +1,5 @@
 import React from 'react';
-import defaultImage from './default.jpg';
+import defaultImage from '../Images/def.jpg';
 
 export default function Poster(props) {
   const { imagePath } = props;

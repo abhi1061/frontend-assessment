@@ -7,11 +7,12 @@ import './home.css';
 import SearchBox from '../SearchBox';
 import CategorySelection from '../Category';
 import List from '../List';
+import Logo from '../Images/Logo.svg';
 
 export default function Home(props) {
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
-  const [query, setQuery] = useState('e'); // Initial query param as wery is required parameter
+  const [query, setQuery] = useState('The'); // Initial query param as wery is required parameter
   const [category, setCategory] = useState('all');
 
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
@@ -49,7 +50,9 @@ export default function Home(props) {
 
   return (
     <div className="home-container">
-      <div className="card shadow banner"></div>
+      <div className="card shadow banner">
+        <img alt="Logo" src={Logo}></img>
+      </div>
       <div className="card shadow p-4 body-card">
         <SearchBox setQuery={setQuery} />
         <CategorySelection category={category} setCategory={setCategory} />

@@ -3,10 +3,15 @@
     flex-direction: column;
 }
 .banner {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
     height: 7vh;
     background-color: #335267;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    padding-left: 1em;
 }
 
 .body-card {

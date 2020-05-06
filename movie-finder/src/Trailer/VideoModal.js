@@ -12,15 +12,8 @@ export default function VideoModal(props) {
     setVideo(videos.results[0]);
   };
 
-  const clearVid = () => {
-    setVideo(null);
-  };
-
   useEffect(() => {
     getTrailerVideos();
-    return () => {
-      clearVid();
-    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

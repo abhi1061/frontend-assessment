@@ -37,7 +37,6 @@ export default function Home(props) {
   }
 
   useEffect(() => {
-    console.log('called');
     fetchData(query, page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page]);

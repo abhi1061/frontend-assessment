@@ -3,6 +3,7 @@ import { Modal } from 'react-bootstrap';
 
 import { getTrailer } from '../Actions';
 
+// There is a bug for react-bootstrap https://github.com/LeGroupeDeFer/infom114_LaboMDL/issues/55
 export default function VideoModal(props) {
   const [video, setVideo] = useState(null);
   const { id, mediatype } = props;

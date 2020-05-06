@@ -57,7 +57,7 @@ export default function Home(props) {
         <SearchBox setQuery={setQuery} />
         <CategorySelection category={category} setCategory={setCategory} />
         {state.length ? (
-          <List id="list" data={filterData(state)} />
+          <List id="list" data={filterData(state)} isFetching={isFetching} />
         ) : (
           <h6>No Data Found</h6>
         )}

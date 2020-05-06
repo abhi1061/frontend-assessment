@@ -6,17 +6,27 @@ import { getTrailer } from '../Actions';
 // There is a bug for react-bootstrap https://github.com/LeGroupeDeFer/infom114_LaboMDL/issues/55
 export default function VideoModal(props) {
   const [video, setVideo] = useState(null);
+  const [loading, setloading] = useState(true);
   const { id, mediatype } = props;
 
   const getTrailerVideos = async () => {
     const videos = await getTrailer(id, mediatype);
     setVideo(videos.results[0]);
+    setloading(false);
   };
 
   useEffect(() => {
     getTrailerVideos();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const renderNoVidMessage = () => {
+    return <h6>No Trailers Available</h6>;
+  };
+
+  const renderLoading = () => {
+    return <i className="fa fa-lg fa-spinner fa-pulse"></i>;
+  };
 
   return (
     <div>
@@ -31,7 +41,9 @@ export default function VideoModal(props) {
           <h5>{video && video.name}</h5>
         </Modal.Header>
         <Modal.Body>
-          {
+          {loading ? (
+            renderLoading()
+          ) : video ? (
             <div className="embed-responsive embed-responsive-16by9">
               <iframe
                 className="embed-responsive-item"
@@ -43,7 +55,9 @@ export default function VideoModal(props) {
                 title={id}
               />
             </div>
-          }
+          ) : (
+            renderNoVidMessage()
+          )}
         </Modal.Body>
       </Modal>
     </div>

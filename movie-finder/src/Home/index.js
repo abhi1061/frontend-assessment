@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 
+import { createData } from './MapData';
 import useInfiniteScroll from './useInfiniteScroll';
 import { getSearchResult } from '../Actions';
 import './home.css';
@@ -14,7 +15,6 @@ export default function Home(props) {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('The'); // Initial query param as wery is required parameter
   const [category, setCategory] = useState('all');
-
   const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
 
   async function fetchData(query, page) {
@@ -41,11 +41,11 @@ export default function Home(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page]);
 
-  function filterData() {
+  function filterData(data) {
     if (category !== 'all') {
-      return _.filter(state, ['media_type', category]);
+      return _.filter(data, ['type', category]);
     }
-    return state;
+    return data;
   }
 
   return (
@@ -57,9 +57,9 @@ export default function Home(props) {
         <SearchBox setQuery={setQuery} />
         <CategorySelection category={category} setCategory={setCategory} />
         {state.length ? (
-          <List id="list" data={filterData()} />
+          <List id="list" data={filterData(createData(state))} />
         ) : (
-          <span>No Data Found</span>
+          <h6>No Data Found</h6>
         )}
       </div>
       {isFetching ? (

@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function Rating(props) {
-  const { vote } = props;
+  const { rating } = props;
 
   const renderRatingColor = (rating) => {
     if (rating <= 20) {
@@ -17,13 +17,13 @@ export default function Rating(props) {
       <span>
         User Rating:{' '}
         <span className="user-rating">
-          {vote > 0 ? `${vote * 10}%` : 'Not Rated'}
+          {rating > 0 ? `${rating}%` : 'Not Rated'}
         </span>
       </span>
       <div className="progress custom-progress-bar  w-100">
         <div
-          className={renderRatingColor(vote * 10)}
-          style={{ width: `${vote * 10}%` }}
+          className={renderRatingColor(rating)}
+          style={{ width: `${rating}%` }}
         ></div>
       </div>
     </div>

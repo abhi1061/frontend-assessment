@@ -23,9 +23,9 @@ export default function Home(props) {
     }
     let response = await getSearchResult(query, page);
     if (isFetching) {
-      setState((prevState) => [...prevState, ...response.results]);
+      setState((prevState) => [...prevState, ...createData(response.results)]);
     } else {
-      setState(response.results);
+      setState(createData(response.results));
     }
   }
 
@@ -37,6 +37,7 @@ export default function Home(props) {
   }
 
   useEffect(() => {
+    console.log('called');
     fetchData(query, page);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page]);
@@ -57,7 +58,7 @@ export default function Home(props) {
         <SearchBox setQuery={setQuery} />
         <CategorySelection category={category} setCategory={setCategory} />
         {state.length ? (
-          <List id="list" data={filterData(createData(state))} />
+          <List id="list" data={filterData(state)} />
         ) : (
           <h6>No Data Found</h6>
         )}

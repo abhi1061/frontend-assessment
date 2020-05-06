@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import _ from 'lodash';
 
 import './searchBox.css';
 
@@ -6,9 +7,13 @@ export default function SearchBar(props) {
   const { setQuery } = props;
   const [inputvalue, setInputValue] = useState('');
 
+  const debouncedSetQueryValue = useRef(
+    _.debounce((value) => setQuery(value), 1000),
+  ).current;
+
   const handleChange = (value) => {
     setInputValue(value);
-    setTimeout(setQuery(value), 3000);
+    debouncedSetQueryValue(value);
   };
 
   const search = () => {

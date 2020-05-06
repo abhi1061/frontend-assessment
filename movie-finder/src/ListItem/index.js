@@ -11,7 +11,7 @@ function truncate(str, n) {
 }
 
 export default function ListItem(props) {
-  const { data } = props;
+  const { data, isFetching } = props;
 
   return (
     <div className="list-item-container mt-4 border-top pt-4">
@@ -26,7 +26,11 @@ export default function ListItem(props) {
         {data.type !== 'person' ? (
           <div className="rating-trailer-container">
             <Rating rating={data.rating} />
-            <Trailer id={data.id} mediatype={data.type} />
+            <Trailer
+              id={data.id}
+              mediatype={data.type}
+              isFetching={isFetching}
+            />
           </div>
         ) : null}
       </div>

@@ -27,18 +27,23 @@ export default function VideoModal(props) {
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
-        <Modal.Header closeButton></Modal.Header>
+        <Modal.Header closeButton>
+          <h5>{video && video.name}</h5>
+        </Modal.Header>
         <Modal.Body>
-          <div className="embed-responsive embed-responsive-16by9">
-            <iframe
-              className="embed-responsive-item"
-              src={
-                video && `https://www.youtube.com/embed/${video.key}?autoplay=0`
-              }
-              id="video"
-              title={id}
-            ></iframe>
-          </div>
+          {
+            <div className="embed-responsive embed-responsive-16by9">
+              <iframe
+                className="embed-responsive-item"
+                src={
+                  video &&
+                  `https://www.youtube.com/embed/${video.key}?autoplay=0`
+                }
+                id="video"
+                title={id}
+              />
+            </div>
+          }
         </Modal.Body>
       </Modal>
     </div>

@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 import VideoModal from './VideoModal';
 
 export default function Trailer(props) {
-  const { id, mediatype } = props;
+  const { id, mediatype, isFetching } = props;
   const [modalShow, setModalShow] = useState(false);
 
   const getTrailerData = () => {
     setModalShow(true);
   };
+
   return (
     <div>
       <button
+        disabled={isFetching}
         className="btn btn-success btn-sm pl-3 pr-3"
         onClick={() => getTrailerData()}
       >

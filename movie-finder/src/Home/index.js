@@ -15,7 +15,6 @@ export default function Home(props) {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('The'); // Initial query param as wery is required parameter
   const [category, setCategory] = useState('all');
-  const [isFetching, setIsFetching] = useInfiniteScroll(fetchMoreListItems);
 
   async function fetchData(query, page) {
     if (query === '') {
@@ -29,12 +28,13 @@ export default function Home(props) {
     }
   }
 
-  function fetchMoreListItems() {
-    setTimeout(() => {
-      setPage(page + 1);
-      setIsFetching(false);
-    }, 2000);
-  }
+  const fetchMoreData = () => {
+    setPage((p) => p + 1);
+    setIsFetching(false);
+  };
+
+  const debouncedFetchMoreData = _.debounce(fetchMoreData, 3000);
+  const [isFetching, setIsFetching] = useInfiniteScroll(debouncedFetchMoreData);
 
   useEffect(() => {
     fetchData(query, page);

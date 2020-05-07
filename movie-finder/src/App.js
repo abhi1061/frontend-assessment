@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { fetchData } from './DataHelpers';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import './App.css';
@@ -10,7 +10,7 @@ function App() {
     <div className="container">
       <div className="row">
         <div className="col-12 justify-content-center my-5">
-          <Home />
+          <Home fetchData={fetchData} />
         </div>
       </div>
     </div>

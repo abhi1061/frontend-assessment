@@ -21,7 +21,7 @@ export default function ListItem(props) {
       <div className="detail-container">
         <Detail data={data} />
         <div className="desc-container pt-3">
-          <p>{truncate(data.overview, 500)}</p>
+          <p>{truncate(data.overview, 300)}</p>
         </div>
         {data.type !== 'person' ? (
           <div className="rating-trailer-container">

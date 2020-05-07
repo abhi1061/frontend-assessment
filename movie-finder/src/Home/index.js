@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 
-import { createData } from './MapData';
 import useInfiniteScroll from './useInfiniteScroll';
-import { getSearchResult } from '../Actions';
 import './home.css';
 import SearchBox from '../SearchBox';
 import CategorySelection from '../Category';
@@ -11,22 +9,11 @@ import List from '../List';
 import Logo from '../Images/Logo.svg';
 
 export default function Home(props) {
+  const { fetchData } = props;
   const [state, setState] = useState([]);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('The'); // Initial query param as wery is required parameter
   const [category, setCategory] = useState('all');
-
-  async function fetchData(query, page) {
-    if (query === '') {
-      return;
-    }
-    let response = await getSearchResult(query, page);
-    if (isFetching) {
-      setState((prevState) => [...prevState, ...createData(response.results)]);
-    } else {
-      setState(createData(response.results));
-    }
-  }
 
   const fetchMoreData = () => {
     setPage((p) => p + 1);
@@ -36,8 +23,12 @@ export default function Home(props) {
   const debouncedFetchMoreData = _.debounce(fetchMoreData, 3000);
   const [isFetching, setIsFetching] = useInfiniteScroll(debouncedFetchMoreData);
 
+  const fetchDataFromServer = () => {
+    fetchData(query, page, isFetching, setState);
+  };
+
   useEffect(() => {
-    fetchData(query, page);
+    fetchDataFromServer();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page]);
 

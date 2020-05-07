@@ -2,12 +2,12 @@
     display: flex;
     width: 100%;
     flex-direction: row;
-    height: 30vh;
     color: #18344A;
 }
 
 .poster-container {
-    width: 16%;
+    min-width: 17%;
+    width: 17%;
 }
 
 .poster {

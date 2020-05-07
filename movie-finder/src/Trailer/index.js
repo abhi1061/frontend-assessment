@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import VideoModal from './VideoModal';
+import VideoModal from '../VideoModal';
 
 export default function Trailer(props) {
   const { id, mediatype, isFetching } = props;

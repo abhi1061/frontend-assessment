@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import _ from 'lodash';
 
 import './home.css';
-import useInfiniteScroll from './useInfiniteScroll';
+import useInfiniteScroll from '../Hooks/useInfiniteScroll';
 import SearchBox from '../SearchBox';
 import CategorySelection from '../Category';
 import List from '../List';
@@ -23,9 +23,11 @@ export default function Home(props) {
   const debouncedFetchMoreData = _.debounce(fetchMoreData, 3000);
   const [isFetching, setIsFetching] = useInfiniteScroll(debouncedFetchMoreData);
 
-  const fetchDataFromServer = () => {
+  const fetchDataFromServer = useCallback(() => {
+    console.log('fired');
     fetchData(query, page, isFetching, setState);
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, page]);
 
   useEffect(() => {
     fetchDataFromServer();

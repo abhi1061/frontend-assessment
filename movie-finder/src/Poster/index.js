@@ -8,7 +8,6 @@ export default function Poster(props) {
   const { imagePath } = props;
   return (
     <LazyLoadImage
-      threshold={100}
       alt="poster"
       effect="opacity"
       className="poster shadow"

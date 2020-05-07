@@ -28,6 +28,7 @@ export default function SearchBar(props) {
         </span>
       </div>
       <input
+        id="search"
         type="text"
         onChange={(e) => handleChange(e.target.value)}
         className="form-control"

@@ -24,7 +24,6 @@ export default function Home(props) {
   const [isFetching, setIsFetching] = useInfiniteScroll(debouncedFetchMoreData);
 
   const fetchDataFromServer = useCallback(() => {
-    console.log('fired');
     fetchData(query, page, isFetching, setState);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page]);

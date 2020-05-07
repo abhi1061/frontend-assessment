@@ -15,7 +15,7 @@ export default function ListItem(props) {
 
   return (
     <div className="list-item-container mt-4 border-top pt-4">
-      <div className="poster-container shadow mr-3">
+      <div className="poster-container mr-3">
         <Poster imagePath={data.poster} />
       </div>
       <div className="detail-container">

@@ -8,7 +8,7 @@ export default function Poster(props) {
     <LazyLoad className="poster" debounce={false} offsetVertical={500}>
       <img
         alt="poster"
-        className="poster"
+        className="poster shadow"
         src={
           imagePath
             ? `https://image.tmdb.org/t/p/w300_and_h450_bestv2${imagePath}`

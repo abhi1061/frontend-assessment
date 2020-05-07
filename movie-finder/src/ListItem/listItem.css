@@ -6,12 +6,13 @@
 }
 
 .poster-container {
-    min-width: 17%;
+    height: auto;
     width: 17%;
+    background-color: transparent;
 }
 
 .poster {
-    height: 100%;
+    height: auto;
     width: 100%;
 }
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 
-import useInfiniteScroll from './useInfiniteScroll';
 import './home.css';
+import useInfiniteScroll from './useInfiniteScroll';
 import SearchBox from '../SearchBox';
 import CategorySelection from '../Category';
 import List from '../List';

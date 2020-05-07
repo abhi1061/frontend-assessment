@@ -3,7 +3,7 @@ import React from 'react';
 export default function Rating(props) {
   const { rating } = props;
 
-  const renderRatingColor = (rating) => {
+  const renderRatingClass = (rating) => {
     if (rating <= 20) {
       return 'progress-bar-poor';
     } else if (rating >= 20 && rating <= 50) {
@@ -22,7 +22,7 @@ export default function Rating(props) {
       </span>
       <div className="progress custom-progress-bar  w-100">
         <div
-          className={renderRatingColor(rating)}
+          className={renderRatingClass(rating)}
           style={{ width: `${rating}%` }}
         ></div>
       </div>

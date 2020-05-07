@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-export const createData = (data) => {
+export const mapData = (data) => {
   return data.map((row) => {
     return {
       id: row.id,

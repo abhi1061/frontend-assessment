@@ -1,4 +1,4 @@
-import { createData } from './MapData';
+import { mapData } from './MapData';
 import { getSearchResult } from '../Actions';
 
 export const fetchData = async (query, page, isFetching, setState) => {
@@ -7,8 +7,8 @@ export const fetchData = async (query, page, isFetching, setState) => {
   }
   let response = await getSearchResult(query, page);
   if (isFetching) {
-    setState((prevState) => [...prevState, ...createData(response.results)]);
+    setState((prevState) => [...prevState, ...mapData(response.results)]);
   } else {
-    setState(createData(response.results));
+    setState(mapData(response.results));
   }
 };

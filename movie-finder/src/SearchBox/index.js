@@ -8,7 +8,7 @@ export default function SearchBar(props) {
   const [inputvalue, setInputValue] = useState('');
 
   const debouncedSetQueryValue = useRef(
-    _.debounce((value) => setQuery(value), 1000),
+    _.debounce((value) => setQuery(value), 2000),
   ).current;
 
   const handleChange = (value) => {

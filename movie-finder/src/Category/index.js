@@ -1,16 +1,10 @@
 import React from 'react';
 
 import './category.css';
+import { filterCategory } from '../Actions/constants';
 
 export default function CategorySelection(props) {
   const { category, setCategory } = props;
-
-  const filterCategory = [
-    { id: 1, name: 'All', mediaType: 'all' },
-    { id: 2, name: 'Movies', mediaType: 'movie' },
-    { id: 3, name: 'TV Shows', mediaType: 'tv' },
-    { id: 4, name: 'People', mediaType: 'person' },
-  ];
 
   function getClassName(mediaType) {
     if (category === mediaType) {

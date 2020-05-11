@@ -7,7 +7,7 @@ import defaultImage from '../Images/def.jpg';
 export default function Poster(props) {
   const { imagePath } = props;
   return (
-    <LazyLoadImage
+    <img
       alt="poster"
       effect="opacity"
       className="poster shadow"

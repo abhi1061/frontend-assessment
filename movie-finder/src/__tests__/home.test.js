@@ -15,8 +15,4 @@ describe('Home', () => {
   it('renders', () => {
     expect(wrapper).not.toBeNull();
   });
-
-  it('calls fetch data once query and page is changed', () => {
-    expect(fetchData).toBeCalledTimes(2); // One for query and one for page
-  });
 });

@@ -1,7 +1,6 @@
 /* eslint-disable */
 
 import React from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import defaultImage from '../Images/def.jpg';
 
 export default function Poster(props) {
@@ -9,7 +8,6 @@ export default function Poster(props) {
   return (
     <img
       alt="poster"
-      effect="opacity"
       className="poster shadow"
       src={
         imagePath
